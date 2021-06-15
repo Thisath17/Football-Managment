@@ -260,6 +260,19 @@ public class PremierLeagueManager implements LeagueManager{
             insertData.get(id1).setNumOfPlayedMatches(team1.getNumOfPlayedMatches()+1);
 
             System.out.println("\nFootballClub{" +
+                    " name='" + team2.name +'\''+
+                    ", clubLocation='" + team2.clubLocation +'\''+
+                    ", numberOfMembers=" + team2.numberOfMembers +
+                    ", numOfPlayedMatches=" + team2.numOfPlayedMatches +
+                    ", wins=" + team2.wins +
+                    ", draws=" + team2.draws +
+                    ", defeats=" + team2.defeats +
+                    ", numOfScoredGoals=" + team2.numOfScoredGoals +
+                    ", numOfReceivedGoals=" + team2.numOfReceivedGoals +
+                    ", currentClubPoints=" + team2.currentClubPoints +
+                    '}'+'\n');
+            
+            System.out.println("\nFootballClub{" +
                     " name='" + team1.name +'\''+
                     ", clubLocation='" + team1.clubLocation +'\''+
                     ", numberOfMembers=" + team1.numberOfMembers +
@@ -272,18 +285,6 @@ public class PremierLeagueManager implements LeagueManager{
                     ", currentClubPoints=" + team1.currentClubPoints +
                     '}'+'\n');
 
-            System.out.println("\nFootballClub{" +
-                    " name='" + team2.name +'\''+
-                    ", clubLocation='" + team2.clubLocation +'\''+
-                    ", numberOfMembers=" + team2.numberOfMembers +
-                    ", numOfPlayedMatches=" + team2.numOfPlayedMatches +
-                    ", wins=" + team2.wins +
-                    ", draws=" + team2.draws +
-                    ", defeats=" + team2.defeats +
-                    ", numOfScoredGoals=" + team2.numOfScoredGoals +
-                    ", numOfReceivedGoals=" + team2.numOfReceivedGoals +
-                    ", currentClubPoints=" + team2.currentClubPoints +
-                    '}'+'\n');
         }
 
     }
