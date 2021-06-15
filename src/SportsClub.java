@@ -1,13 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+public abstract class SportsClub {
+    String name;
+    String clubLocation;
+    int numberOfMembers;
 
-/**
- *
- * @author HimathH
- */
-public class SportsClub {
-    
+    public SportsClub() {
+
+    }
+
+    public SportsClub(String name, String clubLocation, int numberOfMembers) {
+        this.name = name;
+        this.clubLocation = clubLocation;
+        this.numberOfMembers = numberOfMembers;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getClubLocation() {
+        return clubLocation;
+    }
+
+    public void setClubLocation(String clubLocation) {
+        this.clubLocation = clubLocation;
+    }
+
+    public int getNumberOfMembers() {
+        return numberOfMembers;
+    }
+
+    public void setNumberOfMembers(int numberOfMembers) {
+       this.numberOfMembers = numberOfMembers;
+    }
 }
