@@ -1,13 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author HimathH
- */
 public interface LeagueManager {
-    
+
+    public void createClub();
+    public void removeClub();
+    public void displayStatics();
+    public void displayTable();
+    public void addMatch();
+    public void saveInputs();
+    public void loadData();
+    public void exit();
+
 }
