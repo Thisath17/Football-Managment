@@ -6,10 +6,12 @@ import java.sql.SQLOutput;
 import java.util.*;
 
 public class PremierLeagueManager implements LeagueManager{
+    
+    // Creating the arraylists 
     static ArrayList<FootballClub> insertData= new ArrayList<>();
     static ArrayList<ArrayList<String>> insertData2= new ArrayList<>();
 
-
+    // Methode for creating a new club
     @Override
     public void createClub() {
         System.out.println("-----------------------------------------");
@@ -36,6 +38,7 @@ public class PremierLeagueManager implements LeagueManager{
         System.out.println("-----------------------------------------");
     }
 
+    // Methode for the romoving a club
     @Override
     public void removeClub() {
         System.out.println("-----------------------------------------");
@@ -61,6 +64,7 @@ public class PremierLeagueManager implements LeagueManager{
 
     }
 
+    // Methode for the review a team status
     @Override
     public void displayStatics() {
         System.out.println("-----------------------------------------");
@@ -93,6 +97,7 @@ public class PremierLeagueManager implements LeagueManager{
 
     }
 
+    // Methode for the table desplay
     @Override
     public void displayTable() {
         Collections.sort(insertData,FootballClub.comparatorMethod);
@@ -105,6 +110,7 @@ public class PremierLeagueManager implements LeagueManager{
 
     }
 
+    // Methode for the adding a new match
     @Override
     public void addMatch() {
         System.out.println("-----------------------------------------");
@@ -292,8 +298,10 @@ public class PremierLeagueManager implements LeagueManager{
         insertData2.add(innerArrayList);
     }
 
+    // Methode for the saving data
     @Override
     public void saveInputs() throws IOException {
+        // Saving all data to a file
         File dataStore = new File("D:\\Thisath\\IIT\\Level 5 CS\\Object-Oriented Programming (5COSC007C)\\Refer\\Data File\\allClubData");
         FileOutputStream outputData = new FileOutputStream(dataStore);
         ObjectOutputStream getFileData = new ObjectOutputStream(outputData);
@@ -302,6 +310,7 @@ public class PremierLeagueManager implements LeagueManager{
             getFileData.writeObject(fObject);
         }
 
+        // Saving all added data to a txt file 
         if (insertData.size()>0){
             FileWriter writerData = new FileWriter("D:\\Thisath\\IIT\\Level 5 CS\\Object-Oriented Programming (5COSC007C)\\Refer\\Data File\\matchData.txt");
             for (ArrayList<String> matchArray:insertData2){
@@ -314,6 +323,7 @@ public class PremierLeagueManager implements LeagueManager{
 
     }
 
+    // Methode for the load data
     @Override
     public void loadData(String loadedData) throws IOException {
         FileInputStream inputData = new FileInputStream(loadedData);
@@ -364,8 +374,14 @@ public class PremierLeagueManager implements LeagueManager{
         System.out.println("Data successfully loaded....");
     }
 
+    // Methode for the exit
     @Override
     public void exit() {
         System.exit(0);
+    }
+
+    // Method to throw an error massage when data loading get an error
+    public void loadData() {
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 }

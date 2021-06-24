@@ -22,8 +22,8 @@ public class FootballClub extends SportsClub{
                 ", wins=" + wins +
                 ", draws=" + draws +
                 ", defeats=" + defeats +
-                ", numOfReceivedGoals=" + numOfReceivedGoals +
                 ", numOfScoredGoals=" + numOfScoredGoals +
+                ", numOfReceivedGoals=" + numOfReceivedGoals +
                 ", currentClubPoints=" + currentClubPoints +
                 '}'+'\n' ;
     }
