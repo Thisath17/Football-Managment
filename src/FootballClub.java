@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public class FootballClub extends SportsClub{
     int wins;
     int draws;
@@ -92,4 +94,23 @@ public class FootballClub extends SportsClub{
     public void setCurrentClubPoints(int currentClubPoints) {
         this.currentClubPoints = currentClubPoints;
     }
+    
+        public static Comparator<FootballClub> comparatorMethod = new Comparator<FootballClub>() {
+        @Override
+        public int compare(FootballClub o1, FootballClub o2) {
+            Integer newPoint1 = o1.getCurrentClubPoints();
+            Integer newPoint2 = o2.getCurrentClubPoints();
+
+            int pointCompare = newPoint2.compareTo(newPoint1);
+
+            if (pointCompare!=0){
+                return newPoint2.compareTo(newPoint1);
+            }
+
+            Integer newGoal1 = o1.getNumOfScoredGoals()-o1.getNumOfReceivedGoals();
+            Integer newGoal2 = o2.getNumOfScoredGoals()-o2.getNumOfReceivedGoals();
+            return newGoal2.compareTo(newGoal1);
+        }
+    };
+    
 }

@@ -82,7 +82,7 @@ public class PremierLeagueManager implements LeagueManager{
                 System.out.println("Number of Scored Goals  : "+data.numOfScoredGoals);
                 System.out.println("Club Points             : "+data.currentClubPoints);
                 System.out.println("-----------------------------------------");
-            }else{
+            }else {
                 System.out.println("There is no club found under this name, Please try again...");
                 System.out.println("-----------------------------------------");
             }
