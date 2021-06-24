@@ -1,13 +1,7 @@
 import java.util.Comparator;
 
 public class FootballClub extends SportsClub{
-    int wins;
-    int draws;
-    int defeats;
-    int numOfReceivedGoals;
-    int numOfScoredGoals;
-    int numOfPlayedMatches;
-    int currentClubPoints;
+    int wins,draws,defeats,numOfPlayedMatches,numOfScoredGoals,numOfReceivedGoals,currentClubPoints;
 
     public FootballClub() {
     }

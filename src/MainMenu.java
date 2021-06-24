@@ -17,17 +17,17 @@ public class MainMenu {
         // 
         while (true) {
             Scanner scan = new Scanner(System.in);
-            System.out.println("\n=================================");
-            System.out.println("= Premier League menu:           =");
-            System.out.println("= Press 1 to create a club       =");
-            System.out.println("= Press 2 to remove a club       =");
-            System.out.println("= Press 3 to review club statics =");
-            System.out.println("= Press 4 to display point table =");
-            System.out.println("= Press 5 to add a club match    =");
-            System.out.println("= Press 6 to save Inputs         =");
-            System.out.println("= Press 7 to load data           =");
-            System.out.println("= Press 0 to exit                =");
-            System.out.println("==================================");
+            System.out.println("\n====================================");
+            System.out.println("|  Premier League menu:            |");
+            System.out.println("|  Press 1 to create a club        |");
+            System.out.println("|  Press 2 to remove a club        |");
+            System.out.println("|  Press 3 to review club statics  |");
+            System.out.println("|  Press 4 to display point table  |");
+            System.out.println("|  Press 5 to add a club match     |");
+            System.out.println("|  Press 6 to save Inputs          |");
+            System.out.println("|  Press 7 to load data            |");
+            System.out.println("|  Press 0 to exit                 |");
+            System.out.println("====================================");
             System.out.print("Enter your answer: ");
             int answer = scan.nextInt();
 

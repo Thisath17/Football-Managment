@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.io.*;
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class PremierLeagueManager implements LeagueManager{
@@ -23,14 +22,8 @@ public class PremierLeagueManager implements LeagueManager{
         System.out.print("Enter the number of club members: ");
         int numOfClubMembers = scan.nextInt();
 
-        int wins=0;
-        int draws=0;
-        int defeats=0;
-        int numOfReceivedGoals=0;
-        int numOfScoredGoals=0;
-        int numOfPlayedMatches=0;
-        int currentClubPoints=0;
-
+        int wins=0,draws=0,defeats=0,numOfReceivedGoals=0,numOfScoredGoals=0,numOfPlayedMatches=0,currentClubPoints=0;
+        
         insertData.add(new FootballClub(clubName,clubLocation,numOfClubMembers,wins,draws,defeats,numOfReceivedGoals,numOfScoredGoals,numOfPlayedMatches,currentClubPoints));
 
         System.out.println(insertData);
@@ -155,7 +148,7 @@ public class PremierLeagueManager implements LeagueManager{
         System.out.print("Enter second team goals: ");
         int secondTeamGoals = scan.nextInt();
 
-
+        // Creating the inner arraylist
         String intToString1 = String.valueOf(firstTeamGoals);
         String intToString2 = String.valueOf(secondTeamGoals);
         ArrayList<String> innerArrayList = new ArrayList<>();
@@ -165,6 +158,7 @@ public class PremierLeagueManager implements LeagueManager{
         innerArrayList.add(intToString2);
         innerArrayList.add(matchDate);
 
+        // Condision for that team 1 winning
         if (firstTeamGoals>secondTeamGoals){
             System.out.println("\n"+firstTeam+" team is the winner...");
             System.out.println(secondTeam+" team has loss this match...");
@@ -209,7 +203,9 @@ public class PremierLeagueManager implements LeagueManager{
                     ", currentClubPoints=" + team2.currentClubPoints +
                     '}'+'\n');
 
-        } else if (firstTeamGoals==secondTeamGoals){
+        } 
+        // Condision for that two teams are drow
+        else if (firstTeamGoals==secondTeamGoals){
             System.out.println("\n"+"This is a draw match...");
             innerArrayList.add("Draw");
 
@@ -251,7 +247,9 @@ public class PremierLeagueManager implements LeagueManager{
                     ", currentClubPoints=" + team2.currentClubPoints +
                     '}'+'\n');
 
-        }else {
+        }
+        // Condision for that team 2 winning
+        else {
             System.out.println("\n"+secondTeam+" team is the winner...");
             System.out.println(firstTeam+" team has loss this match...");
             innerArrayList.add(secondTeam);
@@ -348,25 +346,25 @@ public class PremierLeagueManager implements LeagueManager{
                 insertData2.add(new ArrayList<>(asList));
 
             }
-            System.out.println("Loaded Data...\n" + insertData2);
-            newLoadData2.close();
+//            System.out.println("Loaded Data...\n" + insertData2);
+//            newLoadData2.close();
         }
         for (;;){
             try {
                 FootballClub fbLoad = (FootballClub) inputData2.readObject();
                 insertData.add(fbLoad);
 
-                System.out.println("FootballClub{" +
-                        "clubName=" + fbLoad.name +
-                        ", location=" + fbLoad.clubLocation +
-                        ", playedMatches=" + fbLoad.numOfPlayedMatches +
-                        ", wins=" + fbLoad.wins +
-                        ", draws=" + fbLoad.draws +
-                        ", defeats=" + fbLoad.defeats +
-                        ", scoredGoals=" + fbLoad.numOfScoredGoals +
-                        ", receivedGoals=" + fbLoad.numOfReceivedGoals +
-                        ", points='" + fbLoad.currentClubPoints + '}');
-                System.out.println("-----------------------------------------------------------------------------------------------------------------------------------");
+//                System.out.println("FootballClub{" +
+//                        "clubName=" + fbLoad.name +
+//                        ", location=" + fbLoad.clubLocation +
+//                        ", playedMatches=" + fbLoad.numOfPlayedMatches +
+//                        ", wins=" + fbLoad.wins +
+//                        ", draws=" + fbLoad.draws +
+//                        ", defeats=" + fbLoad.defeats +
+//                        ", scoredGoals=" + fbLoad.numOfScoredGoals +
+//                        ", receivedGoals=" + fbLoad.numOfReceivedGoals +
+//                        ", points='" + fbLoad.currentClubPoints + '}');
+//                System.out.println("-----------------------------------------------------------------------------------------------------------------------------------");
             }catch (IOException | ClassNotFoundException e){
                 break;
             }

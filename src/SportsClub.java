@@ -2,8 +2,7 @@ import java.io.Serializable;
 
 public abstract class SportsClub implements Serializable {
 
-    String name;
-    String clubLocation;
+    String name,clubLocation;
     int numberOfMembers;
 
     public SportsClub() {
