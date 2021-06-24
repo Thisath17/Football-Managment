@@ -1,10 +1,19 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MainMenu {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
         PremierLeagueManager PM = new PremierLeagueManager();
         boolean exit = false;
+
+        //load data from text files
+        try {
+            PM.loadData("D:\\Thisath\\IIT\\Level 5 CS\\Object-Oriented Programming (5COSC007C)\\Refer\\Data File\\allClubData");
+        }catch (Exception e){
+            e.getMessage();
+        }
+
 
         while (true) {
             Scanner scan = new Scanner(System.in);
@@ -42,7 +51,7 @@ public class MainMenu {
                     PM.saveInputs();
                     break;
                 case 7:
-                    PM.loadData();
+                    PM.loadData("D:\\Thisath\\IIT\\Level 5 CS\\Object-Oriented Programming (5COSC007C)\\Refer\\Data File\\allClubData");
                     break;
                 case 0:
                     PM.exit();

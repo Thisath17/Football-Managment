@@ -1,4 +1,7 @@
-public abstract class SportsClub {
+import java.io.Serializable;
+
+public abstract class SportsClub implements Serializable {
+
     String name;
     String clubLocation;
     int numberOfMembers;
