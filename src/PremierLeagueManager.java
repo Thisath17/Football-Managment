@@ -1,6 +1,7 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Scanner;
+
+import java.io.*;
+import java.sql.SQLOutput;
+import java.util.*;
 
 public class PremierLeagueManager implements LeagueManager{
     static ArrayList<FootballClub> insertData= new ArrayList<>();
@@ -82,7 +83,7 @@ public class PremierLeagueManager implements LeagueManager{
                 System.out.println("Number of Scored Goals  : "+data.numOfScoredGoals);
                 System.out.println("Club Points             : "+data.currentClubPoints);
                 System.out.println("-----------------------------------------");
-            }else {
+            }else{
                 System.out.println("There is no club found under this name, Please try again...");
                 System.out.println("-----------------------------------------");
             }
@@ -92,6 +93,7 @@ public class PremierLeagueManager implements LeagueManager{
 
     @Override
     public void displayTable() {
+        Collections.sort(insertData,FootballClub.comparatorMethod);
         System.out.println("Point Table : ");
         for (FootballClub fbc : insertData) {
             System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
@@ -260,19 +262,6 @@ public class PremierLeagueManager implements LeagueManager{
             insertData.get(id1).setNumOfPlayedMatches(team1.getNumOfPlayedMatches()+1);
 
             System.out.println("\nFootballClub{" +
-                    " name='" + team2.name +'\''+
-                    ", clubLocation='" + team2.clubLocation +'\''+
-                    ", numberOfMembers=" + team2.numberOfMembers +
-                    ", numOfPlayedMatches=" + team2.numOfPlayedMatches +
-                    ", wins=" + team2.wins +
-                    ", draws=" + team2.draws +
-                    ", defeats=" + team2.defeats +
-                    ", numOfScoredGoals=" + team2.numOfScoredGoals +
-                    ", numOfReceivedGoals=" + team2.numOfReceivedGoals +
-                    ", currentClubPoints=" + team2.currentClubPoints +
-                    '}'+'\n');
-            
-            System.out.println("\nFootballClub{" +
                     " name='" + team1.name +'\''+
                     ", clubLocation='" + team1.clubLocation +'\''+
                     ", numberOfMembers=" + team1.numberOfMembers +
@@ -285,18 +274,92 @@ public class PremierLeagueManager implements LeagueManager{
                     ", currentClubPoints=" + team1.currentClubPoints +
                     '}'+'\n');
 
+            System.out.println("\nFootballClub{" +
+                    " name='" + team2.name +'\''+
+                    ", clubLocation='" + team2.clubLocation +'\''+
+                    ", numberOfMembers=" + team2.numberOfMembers +
+                    ", numOfPlayedMatches=" + team2.numOfPlayedMatches +
+                    ", wins=" + team2.wins +
+                    ", draws=" + team2.draws +
+                    ", defeats=" + team2.defeats +
+                    ", numOfScoredGoals=" + team2.numOfScoredGoals +
+                    ", numOfReceivedGoals=" + team2.numOfReceivedGoals +
+                    ", currentClubPoints=" + team2.currentClubPoints +
+                    '}'+'\n');
+        }
+        insertData2.add(innerArrayList);
+    }
+
+    @Override
+    public void saveInputs() throws IOException {
+        File dataStore = new File("D:\\Thisath\\IIT\\Level 5 CS\\Object-Oriented Programming (5COSC007C)\\Refer\\Data File\\allClubData");
+        FileOutputStream outputData = new FileOutputStream(dataStore);
+        ObjectOutputStream getFileData = new ObjectOutputStream(outputData);
+
+        for (FootballClub fObject:insertData){
+            getFileData.writeObject(fObject);
         }
 
+        if (insertData.size()>0){
+            FileWriter writerData = new FileWriter("D:\\Thisath\\IIT\\Level 5 CS\\Object-Oriented Programming (5COSC007C)\\Refer\\Data File\\matchData.txt");
+            for (ArrayList<String> matchArray:insertData2){
+                writerData.write(matchArray+System.lineSeparator());
+            }
+            writerData.close();
+        }
+
+        System.out.println("Details Successfully saved in the Premier Leuge System...");
+
     }
 
     @Override
-    public void saveInputs() {
+    public void loadData(String loadedData) throws IOException {
+        FileInputStream inputData = new FileInputStream(loadedData);
+        ObjectInputStream inputData2 = new ObjectInputStream(inputData);
 
-    }
+        File newLoadData = new File ("D:\\Thisath\\IIT\\Level 5 CS\\Object-Oriented Programming (5COSC007C)\\Refer\\Data File\\matchData.txt");
 
-    @Override
-    public void loadData() {
+        if (newLoadData.length()>0) {
+            FileReader newLoadData2 = new FileReader(newLoadData);
+            char[] chars = new char[(int) newLoadData.length()];
+            newLoadData2.read(chars);
 
+            String fileData = new String(chars);
+
+            String[] newArray = fileData.split(System.lineSeparator());
+            for (String fileList : newArray) {
+                //removing brackets
+                fileList = fileList.replace("[", "").replace("]", "");
+
+                //splitting the elements by comma and space
+                List<String> asList = Arrays.asList(fileList.split(", "));
+                insertData2.add(new ArrayList<>(asList));
+
+            }
+            System.out.println("Loaded Data...\n" + insertData2);
+            newLoadData2.close();
+        }
+        for (;;){
+            try {
+                FootballClub fbLoad = (FootballClub) inputData2.readObject();
+                insertData.add(fbLoad);
+
+                System.out.println("FootballClub{" +
+                        "clubName=" + fbLoad.name +
+                        ", location=" + fbLoad.clubLocation +
+                        ", playedMatches=" + fbLoad.numOfPlayedMatches +
+                        ", wins=" + fbLoad.wins +
+                        ", draws=" + fbLoad.draws +
+                        ", defeats=" + fbLoad.defeats +
+                        ", scoredGoals=" + fbLoad.numOfScoredGoals +
+                        ", receivedGoals=" + fbLoad.numOfReceivedGoals +
+                        ", points='" + fbLoad.currentClubPoints + '}');
+                System.out.println("-----------------------------------------------------------------------------------------------------------------------------------");
+            }catch (IOException | ClassNotFoundException e){
+                break;
+            }
+        }
+        System.out.println("Data successfully loaded....");
     }
 
     @Override
